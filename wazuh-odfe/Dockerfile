@@ -38,6 +38,8 @@ RUN chmod go-w /etc/filebeat/wazuh-template.json
 COPY config/etc/ /etc/
 COPY --chown=root:ossec config/create_user.py /var/ossec/framework/scripts/create_user.py
 
+COPY --chown=root:ossec config/ossec.conf var/ossec/etc/ossec.conf
+
 # Prepare permanent data
 # Sync calls are due to https://github.com/docker/docker/issues/9547
 COPY config/permanent_data.env config/permanent_data.sh /

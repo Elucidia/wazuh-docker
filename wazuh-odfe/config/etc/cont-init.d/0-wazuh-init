@@ -147,6 +147,15 @@ set_custom_cluster_key() {
   sed -i 's/<key>to_be_replaced_by_cluster_key<\/key>/<key>'"${WAZUH_CLUSTER_KEY}"'<\/key>/g' ${WAZUH_INSTALL_PATH}/etc/ossec.conf
 }
 
+
+set_custom_master_ip() {
+  sed -i 's/<node>to_be_replaced_by_master_ip<\/node>/<node>'"${MASTER_NODE_DNS}"'<\/node>/g' ${WAZUH_INSTALL_PATH}/etc/ossec.conf
+}
+
+set_node_type() {
+  sed -i 's/<node_type>master<\/node_type>/<node_type>'"${NODE_TYPE}"'<\/node_type>/g' ${WAZUH_INSTALL_PATH}/etc/ossec.conf
+}
+
 ##############################################################################
 # Main function
 ##############################################################################
@@ -178,7 +187,8 @@ main() {
 
   # Allow setting custom cluster key
   set_custom_cluster_key
-
+  set_custom_master_ip
+  set_node_type
   # Delete temporary data folder
   rm -rf ${WAZUH_INSTALL_PATH}/data_tmp
 
