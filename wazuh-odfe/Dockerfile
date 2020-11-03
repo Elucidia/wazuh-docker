@@ -51,3 +51,9 @@ RUN chmod 755 /permanent_data.sh && \
 EXPOSE 55000/tcp 1514/tcp 1515/tcp 514/udp 1516/tcp
 
 ENTRYPOINT [ "/init" ]
+
+# This script clean logs files
+COPY config/logsCleaner.sh /usr/local/sbin/
+
+# Create the cron job to clean the logs files
+RUN echo '*/5  *    * * *   root    ../usr/local/sbin/logsCleaner.sh' >> etc/crontab
