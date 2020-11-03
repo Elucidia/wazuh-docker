@@ -1,0 +1,9 @@
+<decoder name="modSecurity">
+   <prematch>Message:\sAccess\sdenied\swith\scode\s\d+</prematch>
+</decoder>
+
+<decoder name="modSecurityAction">
+   <parent>modSecurity</parent>
+   <regex>Message:\s(Access\sdenied\swith\scode\s403)</regex>
+   <order>action</order>
+</decoder>

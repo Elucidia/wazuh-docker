@@ -1,0 +1,53 @@
+<group name="plesk,">
+   <rule id="100100" level="0">
+      <decoded_as>pleskExtensionUpgraded</decoded_as>
+      <description>Grouping of plesk rules</description>
+   </rule>
+   <rule id="100101" level="3">
+      <if_sid>100100</if_sid>
+      <regex>^\.+\s'Extension upgraded'</regex>
+      <description>Plesk extension upgraded.</description>
+   </rule>
+
+   <rule id="100102" level="0">
+      <decoded_as>pleskComponentUpdated</decoded_as>
+      <description>Grouping of plesk rules</description>
+   </rule>
+     <rule id="100103" level="3">
+      <if_sid>100102</if_sid>
+      <regex>^\.+\s'Plesk component updated'</regex>
+      <description>Plesk component upgraded.</description>
+   </rule>
+
+     <rule id="100104" level="0">
+      <decoded_as>pleskUserLoggedIn</decoded_as>
+      <description>Grouping of plesk rules</description>
+   </rule>
+     <rule id="100105" level="3">
+      <if_sid>100104</if_sid>
+      <regex>^\.+\s'Plesk user logged in'</regex>
+      <description>Plesk user logged in.</description>
+   </rule>
+</group>
+
+<group name="fail2ban,">
+   <rule id="100010" level="0">
+      <decoded_as>fail2ban</decoded_as>
+      <description>Group of Fail2ban rules</description>
+   </rule>
+   <rule id="100011" level="3">
+      <if_sid>100010</if_sid>
+      <regex>NOTICE\s+[\S+]\sBan</regex>
+      <description>IP Banned by Fail2ban</description>
+   </rule>
+   <rule id="100012" level="3">
+      <if_sid>100010</if_sid>
+      <regex>NOTICE\s+[\S+]\sUnban</regex>
+      <description>IP Unbanned by Fail2ban</description>
+   </rule>
+   <rule id="100013" level="3">
+      <if_sid>100010</if_sid>
+      <regex>Found</regex>
+      <description>IP Found by Fail2ban</description>
+   </rule>
+</group>

@@ -1,0 +1,27 @@
+<decoder name="fail2ban">
+   <prematch>[\d+]: NOTICE\s+[\S+]|[\d+]: INFO\s+[\S+]|[\d+]: WARNING\s+[\S+]|[\d+]: ERROR\s+[\S+]</prematch>
+</decoder>
+
+<decoder name="fail2banAction">
+   <parent>fail2ban</parent>
+   <regex>[\d+]: NOTICE\s+ [(\S+)]|[\d+]: INFO\s+ [(\S+)]|[\d+]: WARNING\s+ [(\S+)]</regex>
+   <order>origin</order>
+</decoder>
+
+<decoder name="fail2banAction">
+   <parent>fail2ban</parent>
+   <regex>[\d+]: NOTICE\s+ [\S+] (Ban)|[\d+]: NOTICE\s+ [\S+] (Unban)|[\d+]: INFO\s+ [\S+] (Found)|[\d+]: WARNING\s+ (.+)</regex>
+   <order>action</order>
+</decoder>
+
+<decoder name="fail2banAction">
+   <parent>fail2ban</parent>
+   <regex>Ban (\d+.\d+.\d+.\d+)|Unban (\d+.\d+.\d+.\d+)|Found (\d+.\d+.\d+.\d+)</regex>
+   <order>srcip</order>
+</decoder>
+
+<decoder name="fail2banAction">
+   <parent>fail2ban</parent>
+   <regex>Found \d+.\d+.\d+.\d+\s-\s(\d+-\d+-\d+\s\d+:\d+:\d+)</regex>
+   <order>foundDate</order>
+</decoder>

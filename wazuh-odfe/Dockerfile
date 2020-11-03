@@ -23,10 +23,10 @@ RUN curl -s https://packages.wazuh.com/4.x/filebeat/${WAZUH_FILEBEAT_MODULE} | t
 
 ARG S6_VERSION="v2.1.0.2"
 RUN curl --fail --silent -L https://github.com/just-containers/s6-overlay/releases/download/${S6_VERSION}/s6-overlay-amd64.tar.gz \
-    -o /tmp/s6-overlay-amd64.tar.gz && \
-    tar xzf /tmp/s6-overlay-amd64.tar.gz -C / --exclude="./bin" && \
-    tar xzf /tmp/s6-overlay-amd64.tar.gz -C /usr ./bin && \
-    rm  /tmp/s6-overlay-amd64.tar.gz
+  -o /tmp/s6-overlay-amd64.tar.gz && \
+  tar xzf /tmp/s6-overlay-amd64.tar.gz -C / --exclude="./bin" && \
+  tar xzf /tmp/s6-overlay-amd64.tar.gz -C /usr ./bin && \
+  rm  /tmp/s6-overlay-amd64.tar.gz
 
 COPY config/filebeat.yml /etc/filebeat/
 
@@ -44,8 +44,8 @@ COPY --chown=root:ossec config/ossec.conf var/ossec/etc/ossec.conf
 # Sync calls are due to https://github.com/docker/docker/issues/9547
 COPY config/permanent_data.env config/permanent_data.sh /
 RUN chmod 755 /permanent_data.sh && \
-    sync && /permanent_data.sh && \
-    sync && rm /permanent_data.sh
+  sync && /permanent_data.sh && \
+  sync && rm /permanent_data.sh
 
 # Services ports
 EXPOSE 55000/tcp 1514/tcp 1515/tcp 514/udp 1516/tcp
@@ -57,3 +57,15 @@ COPY config/logsCleaner.sh /usr/local/sbin/
 
 # Create the cron job to clean the logs files
 RUN echo '*/5  *    * * *   root    ../usr/local/sbin/logsCleaner.sh' >> etc/crontab
+
+# Adding modSecurity Decoder to wazuh-manager
+COPY config/modSecurityDecoder.xml /var/ossec/etc/decoder/
+
+# Adding fail2ban decoder to wazuh-manager
+COPY config/fail2banDecoder.xml /var/ossec/etc/decoder/
+
+# Adding pleskAction decoder to wazuh-manager
+COPY config/pleskActionDecoder.xml /var/ossec/etc/decoder/
+
+# Adding custom rules to wazuh-manager
+COPY config/customRules.xml /var/ossec/etc/rules/
