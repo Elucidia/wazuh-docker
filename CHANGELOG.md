@@ -1,6 +1,34 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Wazuh Docker v4.0.4_1.11.0
+
+### Added
+
+- Update to Wazuh version [4.0.4](https://github.com/wazuh/wazuh/blob/v4.0.4/CHANGELOG.md#v404)
+
+
+## Wazuh Docker v4.0.3_1.11.0
+
+### Added
+
+- Update to Wazuh version 4.0.3
+
+
+## Wazuh Docker v4.0.2_1.11.0
+
+### Added
+
+- Update to Wazuh version 4.0.2
+
+## Wazuh Docker v4.0.1_1.11.0
+
+### Added
+
+- Update to Wazuh version 4.0.1
+- Opendistro 1.11.0 compatiblity
+- Re-enabled dumping ossec.log to stdout
+
 ## Wazuh Docker v4.0.0_1.10.1
 
 ### Added
