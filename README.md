@@ -89,8 +89,6 @@ ADMIN_PRIVILEGES=true               # App privileges
 
     ├── CHANGELOG.md
     ├── docker-compose.yml
-    ├── elastic_conf
-    │   └── elasticsearch.yml
     ├── generate-opendistro-certs.yml
     ├── kibana-odfe
     │   ├── config
@@ -150,15 +148,22 @@ ADMIN_PRIVILEGES=true               # App privileges
 
 * `4.0` branch on correspond to the latest Wazuh-Docker stable version.
 * `master` branch contains the latest code, be aware of possible bugs on this branch.
-* `Wazuh.Version_ElasticStack.Version` (for example 3.10.2_7.5.0) branch. This branch contains the current release referenced in Docker Hub. The container images are installed under the current version of this branch.
+* `Wazuh.Version_ElasticStack.Version` (for example 3.13.1_7.8.0) branch. This branch contains the current release referenced in Docker Hub. The container images are installed under the current version of this branch.
 
 
 ## Compatibility Matrix
 
 | Wazuh version | ODFE    |
 |---------------|---------|
+| v4.0.4        | 1.11.0  |
+|---------------|---------|
+| v4.0.3        | 1.11.0  |
+|---------------|---------|
+| v4.0.2        | 1.11.0  |
+|---------------|---------|
+| v4.0.1        | 1.11.0  |
+|---------------|---------|
 | v4.0.0        | 1.10.1  |
-
 
 ## Credits and Thank you
 
@@ -171,7 +176,7 @@ We thank you them and everyone else who has contributed to this project.
 
 ## License and copyright
 
-Wazuh Docker Copyright (C) 2020 Wazuh Inc. (License GPLv2)
+Wazuh Docker Copyright (C) 2021 Wazuh Inc. (License GPLv2)
 
 ## Web references
 
