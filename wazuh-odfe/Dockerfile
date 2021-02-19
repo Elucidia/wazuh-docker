@@ -39,6 +39,8 @@ COPY config/etc/ /etc/
 COPY --chown=root:ossec config/create_user.py /var/ossec/framework/scripts/create_user.py
 
 COPY --chown=root:ossec config/ossec.conf var/ossec/etc/ossec.conf
+COPY --chown=root:ossec config/decoders/ var/ossec/etc/decoders/
+COPY --chown=root:ossec config/rulesets/ var/ossec/etc/rules/
 
 # Prepare permanent data
 # Sync calls are due to https://github.com/docker/docker/issues/9547
