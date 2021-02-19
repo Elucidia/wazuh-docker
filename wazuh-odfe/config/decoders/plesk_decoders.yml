@@ -1,0 +1,77 @@
+<decoder name="pleskExtensionUpgraded">
+   <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'Extension upgraded'</prematch>
+   <regex>^\d+.\d+.\d+.\d+\s(\w+)\s[\d+-\d+-\d+\s\d+:\d+:\d+]</regex>
+   <order>role</order>
+</decoder>
+
+<decoder name="pleskExtensionUpgraded_child">
+   <parent>pleskExtensionUpgraded</parent>
+   <regex>^(\d+.\d+.\d+.\d+)\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'(\.+)'</regex>
+   <order>srcip, action</order>
+</decoder>
+
+<decoder name="pleskExtensionUpgraded_child">
+   <parent>pleskExtensionUpgraded</parent>
+   <regex offset="after_parent">'\.+'\s\p'Extension Id':\s'(\.+ => \.+)'</regex>
+   <order>extensionId</order>
+</decoder>
+
+<decoder name="pleskExtensionUpgraded_child">
+   <parent>pleskExtensionUpgraded</parent>
+   <regex offset="after_parent">\.+'Extension Name':\s'(\.+ => \.+)'</regex>
+   <order>extensionName</order>
+</decoder>
+
+<decoder name="pleskExtensionUpgraded_child">
+   <parent>pleskExtensionUpgraded</parent>
+   <regex offset="after_parent">\.+'Extension Release':\s'(\.+ => \.+)'</regex>
+   <order>extensionRelease</order>
+</decoder>
+
+<decoder name="pleskExtensionUpgraded_child">
+   <parent>pleskExtensionUpgraded</parent>
+   <regex offset="after_parent">\.+'Extension Version':\s'(\.+ => \.+)'</regex>
+   <order>extensionVersion</order>
+</decoder>
+
+<decoder name="pleskComponentUpdated">
+   <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'Plesk component updated'</prematch>
+   <regex>^\d+.\d+.\d+.\d+\s(\w+)\s[\d+-\d+-\d+\s\d+:\d+:\d+]</regex>
+   <order>role</order>
+</decoder>
+
+<decoder name="pleskComponentUpdated_child">
+   <parent>pleskComponentUpdated</parent>
+  <regex>^(\d+.\d+.\d+.\d+)\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'(\.+)'</regex>
+   <order>srcip, action</order>
+</decoder>
+
+<decoder name="pleskComponentUpdated_child">
+   <parent>pleskComponentUpdated</parent>
+   <regex offset="after_parent">\s\p'COMP_SERVICE_NODE':\s'(\.+ => \.+)'</regex>
+   <order>componentServiceNode</order>
+</decoder>
+
+<decoder name="pleskComponentUpdated_child">
+   <parent>pleskComponentUpdated</parent>
+   <regex offset="after_parent">\.+'Plesk component name':\s'(\.+ => \.+)'</regex>
+   <order>componentName</order>
+</decoder>
+
+<decoder name="pleskUserLoggedIn">
+   <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'Plesk user logged in'</prematch>
+   <regex>^\d+.\d+.\d+.\d+\s(\w+)\s[\d+-\d+-\d+\s\d+:\d+:\d+]</regex>
+   <order>role</order>
+</decoder>
+
+<decoder name="pleskUserLoggedIn_child">
+   <parent>pleskUserLoggedIn</parent>
+  <regex>^(\d+.\d+.\d+.\d+)\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'(\.+)'</regex>
+   <order>srcip, action</order>
+</decoder>
+
+<decoder name="pleskUserLoggedIn_child">
+   <parent>pleskUserLoggedIn</parent>
+   <regex offset="after_parent">\s\p'Contact Name':\s'(\.+ => \.+)'</regex>
+   <order>contactName</order>
+</decoder>
