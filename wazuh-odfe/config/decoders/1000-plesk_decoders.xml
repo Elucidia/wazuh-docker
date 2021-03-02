@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
 <decoder name="pleskDecoderNew">
     <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'\.+'\s\p'\.+':\s'' => '\.+'</prematch>
 </decoder>
@@ -10,7 +7,6 @@
     <regex>^(\d+.\d+.\d+.\d+)\s(\w+)\s[(\d+-\d+-\d+\s\d+:\d+:\d+)]\s'(\.+)'\s\p'(\.+)':\s'' => '(\.+)'</regex>
     <order>srcip,user,timestamp,action,data.key1,data.newvalue1</order>
     <fts>srcip,user</fts>
-
 </decoder>
 
 <decoder name="pleskDecoderNew_child">
@@ -67,6 +63,6 @@
 <decoder name="pleskDecoderFailed_child">
     <parent>pleskDecoderFailed</parent>
     <regex>^(\d+.\d+.\d+.\d+)\s+[(\d+-\d+-\d+\s\d+:\d+:\d+)]\s'(\.+)'\s\p'(\.+)':\s'(\.+)' => '',\s'(\.+)':\s'(\.+)' => ''</regex>
-    <order>srcip,timestamp,action,data.key1,data.oldvalue1,data.key2,data.value2</order>
-    <fts>srcip</fts>
+    <order>srcip,timestamp,action,data.key1,data.oldvalue1,data.key2,user</order>
+    <fts>srcip,user</fts>
 </decoder>
