@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- <decoder name="plesk">
-    <program_name>^plesk</program_name>
-</decoder> -->
 
 <decoder name="pleskDecoderNew">
     <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'\.+'\s\p'\.+':\s'' => '\.+'</prematch>
