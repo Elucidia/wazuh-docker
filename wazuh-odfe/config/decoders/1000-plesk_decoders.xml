@@ -1,0 +1,68 @@
+<decoder name="pleskDecoderNew">
+    <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'\.+'\s\p'\.+':\s'' => '\.+'</prematch>
+</decoder>
+
+<decoder name="pleskDecoderNew_child">
+    <parent>pleskDecoderNew</parent>
+    <regex>^(\d+.\d+.\d+.\d+)\s(\w+)\s[(\d+-\d+-\d+\s\d+:\d+:\d+)]\s'(\.+)'\s\p'(\.+)':\s'' => '(\.+)'</regex>
+    <order>srcip,user,timestamp,action,data.key1,data.newvalue1</order>
+    <fts>srcip,user</fts>
+</decoder>
+
+<decoder name="pleskDecoderNew_child">
+    <parent>pleskDecoderNew</parent>
+    <regex offset="after_parent">,\s'(\.+)':\s'' => '(\.+)'</regex>
+    <order>data.key2,data.newvalue2</order>
+</decoder>
+
+<decoder name="pleskDecoderNew_child">
+    <parent>pleskDecoderNew</parent>
+    <regex offset="after_parent">,\s'\.+':\s'' => '\.+',\s'(\.+)':\s'' => '(\.+)'</regex>
+    <order>data.key3,data.newvalue3</order>
+</decoder>
+
+<decoder name="pleskDecoderNew_child">
+    <parent>pleskDecoderNew</parent>
+    <regex offset="after_parent">,\s'\.+':\s'' => '\.+',\s'\.+':\s'' => '\.+',\s'(\.+)':\s'' => '(\.+)'</regex>
+    <order>data.key4,data.newvalue4</order>
+</decoder>
+
+<decoder name="pleskDecoderUpdate">
+    <prematch>^\d+.\d+.\d+.\d+\s\w+\s[\d+-\d+-\d+\s\d+:\d+:\d+]\s'\.+'\s\p'\.+':\s'\.+' => '\.+'</prematch>
+</decoder>
+
+<decoder name="pleskDecoderUpdate_child">
+    <parent>pleskDecoderUpdate</parent>
+    <regex>^(\d+.\d+.\d+.\d+)\s(\w+)\s[(\d+-\d+-\d+\s\d+:\d+:\d+)]\s'(\.+)'\s\p'(\.+)':\s'(\.+)' => '(\.+)'</regex>
+    <order>srcip,user,timestamp,action,data.key1,data.oldvalue1,data.newvalue1</order>
+    <fts>srcip,user</fts>
+</decoder>
+
+<decoder name="pleskDecoderUpdate_child">
+    <parent>pleskDecoderUpdate</parent>
+    <regex offset="after_parent">,\s'(\.+)':\s'(\.+)' => '(\.+)'</regex>
+    <order>data.key2,data.oldvalue2,data.newvalue2</order>
+</decoder>
+
+<decoder name="pleskDecoderUpdate_child">
+    <parent>pleskDecoderUpdate</parent>
+    <regex offset="after_parent">,\s'\.+':\s'\.+' => '\.+',\s'(\.+)':\s'(\.+)' => '(\.+)'</regex>
+    <order>data.key3,data.oldvalue3,data.newvalue3</order>
+</decoder>
+
+<decoder name="pleskDecoderUpdate_child">
+    <parent>pleskDecoderUpdate</parent>
+    <regex offset="after_parent">,\s'\.+':\s'\.+' => '\.+',\s'\.+':\s'\.+' => '\.+',\s'(\.+)':\s'(\.+)' => '(\.+)'</regex>
+    <order>data.key4,data.oldvalue4,data.newvalue4</order>
+</decoder>
+
+<decoder name="pleskDecoderFailed">
+    <prematch>^\d+.\d+.\d+.\d+\s+[\d+-\d+-\d+\s\d+:\d+:\d+]\s'\.+'\s\p'\.+':\s'\.+' => ''</prematch>
+</decoder>
+
+<decoder name="pleskDecoderFailed_child">
+    <parent>pleskDecoderFailed</parent>
+    <regex>^(\d+.\d+.\d+.\d+)\s+[(\d+-\d+-\d+\s\d+:\d+:\d+)]\s'(\.+)'\s\p'(\.+)':\s'(\.+)' => '',\s'(\.+)':\s'(\.+)' => ''</regex>
+    <order>srcip,timestamp,action,data.key1,data.oldvalue1,data.key2,user</order>
+    <fts>srcip,user</fts>
+</decoder>
